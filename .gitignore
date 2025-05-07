@@ -43,5 +43,9 @@ coverage
 *.swo
 .DS_Store
 
+# Cline
+memory-bank/
+.clinerules
+
 # Working files
 productImages/
