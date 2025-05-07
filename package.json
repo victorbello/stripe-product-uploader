@@ -1,0 +1,20 @@
+{
+  "name": "stripe-product-uploader",
+  "version": "1.0.0",
+  "description": "A script to synchronize product data from Excel to Stripe",
+  "main": "stripe-product-uploader.js",
+  "scripts": {
+    "start": "node stripe-product-uploader.js"
+  },
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "dotenv": "^16.0.3",
+    "exceljs": "^4.3.0",
+    "stripe": "^12.0.0",
+    "yargs": "^17.7.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "type": "commonjs"
+}
