@@ -4,7 +4,8 @@
   "description": "A script to synchronize product data from Excel to Stripe",
   "main": "stripe-product-uploader.js",
   "scripts": {
-    "start": "node stripe-product-uploader.js"
+    "upload": "node stripe-product-uploader.js",
+    "download": "node stripe-product-downloader.js"
   },
   "dependencies": {
     "chalk": "^4.1.2",

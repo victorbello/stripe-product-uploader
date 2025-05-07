@@ -1,12 +1,31 @@
-# Stripe Product Uploader
+# Stripe Product Tools
 
-A Node.js script that processes product data from an Excel file and synchronizes it with the Stripe product catalog. The script creates products in Stripe and updates the Excel file with the corresponding Stripe Product and Price IDs.
+This repository contains Node.js scripts for synchronizing product data between Excel files and the Stripe product catalog.
+
+## Stripe Product Uploader
+
+A script that processes product data from an Excel file and synchronizes it with the Stripe product catalog. The script creates products in Stripe and updates the Excel file with the corresponding Stripe Product and Price IDs.
+
+## Stripe Product Downloader
+
+A script that fetches product data from Stripe and creates an Excel file with the same structure as the one used for uploading. The script downloads product images and saves them to the productImages folder.
 
 ## Features
 
+### Uploader Features
 - Reads product data from an Excel file
 - Creates products and prices in Stripe
 - Updates the Excel file with Stripe IDs
+- Supports dry run mode for testing
+- Provides detailed logging
+- Handles errors gracefully
+
+### Downloader Features
+- Fetches products and prices from Stripe
+- Downloads product images to the productImages folder
+- Creates an Excel file with the same structure as the one used for uploading
+- Saves Excel files to the downloads folder
+- Names the Excel file with the current date and time
 - Supports dry run mode for testing
 - Provides detailed logging
 - Handles errors gracefully
@@ -79,13 +98,15 @@ This approach ensures that product images are properly displayed in the Stripe d
 
 ## Usage
 
-Run the script with the path to your Excel file:
+### Uploader Usage
+
+Run the uploader script with the path to your Excel file:
 
 ```bash
 node stripe-product-uploader.js --file=StripeProducts.xlsx
 ```
 
-### Command-line Options
+#### Uploader Command-line Options
 
 - `--file`, `-f`: Path to the Excel file (required)
 - `--output`, `-o`: Path to save the updated Excel file (defaults to overwriting the input file)
@@ -93,7 +114,7 @@ node stripe-product-uploader.js --file=StripeProducts.xlsx
 - `--help`, `-h`: Show help
 - `--version`, `-v`: Show version
 
-### Examples
+#### Uploader Examples
 
 Process products from an Excel file:
 
@@ -111,6 +132,41 @@ Perform a dry run to test without making changes:
 
 ```bash
 node stripe-product-uploader.js --file=StripeProducts.xlsx --dryRun
+```
+
+### Downloader Usage
+
+Run the downloader script to fetch products from Stripe:
+
+```bash
+node stripe-product-downloader.js
+```
+
+#### Downloader Command-line Options
+
+- `--limit`, `-l`: Maximum number of products to fetch (default: 100)
+- `--dryRun`, `-d`: Perform a dry run without downloading images or creating the Excel file
+- `--help`, `-h`: Show help
+- `--version`, `-v`: Show version
+
+#### Downloader Examples
+
+Download all products from Stripe (up to default limit):
+
+```bash
+node stripe-product-downloader.js
+```
+
+Download up to 500 products:
+
+```bash
+node stripe-product-downloader.js --limit=500
+```
+
+Perform a dry run:
+
+```bash
+node stripe-product-downloader.js --dryRun
 ```
 
 ## Error Handling
